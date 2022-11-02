@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main() {
+	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", operate, alp;
+	int x, index;
+	scanf("%c%d%c", &operate, &x, &alp);
+	for (int i = 0; i < 26; i++) {
+		if (alpha[i] == alp) {
+			index = i;
+			break;
+		}
+	}
+	if (operate == '+') {
+		index += x;
+		if (index > 25) {
+			printf("%c", alpha[index % 26]);
+		}
+		else {
+			printf("%c", alpha[index]);
+		}
+	}
+	else {
+		index -= x;
+		if (index < 0) {
+			printf("%c", alpha[26 + (index % 26)]);
+		}
+		else {
+			printf("%c", alpha[index]);
+		}
+	}
+}
