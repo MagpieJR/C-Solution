@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() {
+	int num;
+	scanf("%d", &num);
+	if (num > 0) {
+		printf("%d是正數\n", num);
+		if (num <= 10000) {
+			printf("A");
+		}
+		else {
+			printf("B");
+		}
+	}
+	else if (num < 0) {
+		printf("%d是負數\n", num);
+		if (num <= -10000) {
+			printf("C");
+		}
+		else {
+			printf("D");
+		}
+	}
+	else {
+		printf("0不是正數也不是負數");
+	}
+}
