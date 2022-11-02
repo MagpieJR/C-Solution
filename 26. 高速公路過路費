@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+void main() {
+	int mile;
+	scanf("%d", &mile);
+	if (mile < 21) {
+		printf("%d", 5 * mile);
+	}
+	else if (mile < 100) {
+		printf("%d", 20 * 5 + (mile - 20) * 8);
+	}
+	else {
+		printf("%.0f", (20 * 5 + (mile - 20) * 8) * 0.9);
+	}
+}
