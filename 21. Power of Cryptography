@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double n, p;
+	scanf("%lf%lf", &n, &p);
+	printf("%.0f", pow(p, 1 / n));
+}
