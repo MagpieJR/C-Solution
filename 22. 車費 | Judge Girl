@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main(void) {
+	int n;
+	scanf("%d", &n);
+	if (n <= 1500)
+		printf("%d", 80);
+	else {
+		n -= 1500;
+		if (n % 499 == 0)
+			printf("%d", 80 + (n / 499) * 5);
+		else
+			printf("%d", 80 + ((n / 499) + 1) * 5);
+	}
+}
