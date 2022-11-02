@@ -1,0 +1,8 @@
+void main() {
+	float N, sum = 0;
+	scanf("%f", &N);
+	for (float i = 1; i < N + 1; i++) {
+		sum += 1 / i;
+	}
+	printf("%.2f", sum);
+}
