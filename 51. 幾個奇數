@@ -1,0 +1,13 @@
+#include <stdio.h>
+void main() {
+	int sum = 0, N;
+	while (scanf("%d", &N)) {
+		if (N == 0) {
+			break;
+		}
+		if (N % 2 != 0) {
+			sum += 1;
+		}
+	}
+	printf("%d", sum);
+}
