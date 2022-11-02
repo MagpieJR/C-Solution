@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) {
+int x, y, z, flag = 1;
+scanf("%d%d%d", &x, &y, &z);
+if (x + y != z) {
+flag = 0;
+}
+if (flag) {
+printf("true");
+}
+else {
+printf("false");
+}
+}
