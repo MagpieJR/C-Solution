@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void main() {
+	char input;
+	char alpha[2][27] = { "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ" };
+	int flag = 0, index;
+	scanf(" %c", &input);
+	for (int i = 0; i < 26; i++) {
+		if (input == alpha[0][i] | input == alpha[1][i]) {
+			flag = 1;
+			index = i;
+			break;
+		}
+	}
+	if (flag) {
+		if (index == 0) {
+			printf("the first.");
+		}
+		else if (index == 25) {
+			printf("the last.");
+		}
+		else {
+			printf("%c%c", alpha[1][index - 1], alpha[1][index + 1]);
+		}
+	}
+	else {
+		printf("not English.");
+	}
+}
