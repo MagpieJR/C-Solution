@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	int year, month, day, flag = 1;
+	scanf("%d%d%d", &year, &month, &day);
+	int a[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	int b[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	if (year % 4 == 0) {
+		if (year % 100 == 0) {
+			if (year % 400 != 0) {
+				flag = 0;
+			}
+		}
+	}
+	else {
+		flag = 0;
+	}
+	int sum = 0;
+	if (flag == 1) {
+		for (int i = 0; i < month - 1; i++) {
+			sum += b[i];
+		}
+	}
+	else {
+		for (int i = 0; i < month - 1; i++) {
+			sum += a[i];
+		}
+	}
+	sum += day;
+	printf("%d", sum);
+}
