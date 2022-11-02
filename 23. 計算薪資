@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main(void) {
+	int n, income;
+	scanf("%d", &n);
+	if (n <= 60) {
+		income = n * 100;
+	}
+	else if (n <= 75) {
+		income = (n - 60) * 125 + 60 * 100;
+	}
+	else {
+		income = (n - 75) * 175 + 15 * 125 + 60 * 100;
+	}
+	printf("%d", income);
+}
