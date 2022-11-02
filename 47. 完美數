@@ -1,0 +1,28 @@
+#include <stdio.h>
+int f(int N) {
+	int sum = 0;
+	for (int i = 1; i < N; i++) {
+		if (N % i == 0) {
+			sum += i;
+		}
+	}
+	if (sum == N) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+void main() {
+	int N, flag = 0;
+	scanf("%d", &N);
+	for (int i = 1; i < N + 1; i++) {
+		flag += f(i);
+		if (flag == 1 && f(i)) {
+			printf("%d", i);
+		}
+		else if (f(i)) {
+			printf(" %d", i);
+		}
+	}
+}
