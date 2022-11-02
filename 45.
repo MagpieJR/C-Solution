@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+void main() {
+	int N;
+	float sum = 0;
+	scanf("%d", &N);
+	for (int i = 1; i < N + 1; i++) {
+		float step = 1;
+		for (int j = 1; j < i + 1; j++) {
+			step *= j;
+		}
+		sum += (i / step);
+	}
+	printf("%.5f", sum);
+}
