@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+	char digit[50];
+	scanf("%s", digit);
+	int flag = 1;
+	for (int i = 0; i < 2; i++) {
+		if (digit[i] != digit[4 - i]) {
+			flag = 0;
+			break;
+		}
+	}
+	if (flag) {
+		printf("%d", 1);
+	}
+	else {
+		printf("%d", 0);
+	}
+}
