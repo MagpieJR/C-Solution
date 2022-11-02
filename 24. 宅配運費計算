@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main(void) {
+	int weight, distance, payment;
+	scanf("%d%d", &weight, &distance);
+
+	if (weight < 21) {
+		if (distance < 10) {
+			printf("%d", 100);
+		}
+		else if (weight < 5) {
+			printf("%d", 100 + 10 * distance);
+		}
+		else if (weight < 11) {
+			printf("%d", 100 + 20 * distance);
+		}
+		else {
+			printf("%d", 100 + 40 * distance);
+		}
+	}
+	else {
+		printf("不收件");
+	}
+}
