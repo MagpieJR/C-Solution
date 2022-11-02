@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main(void) {
+	int month, eletric;
+	scanf("%d%d", &month, &eletric);
+	if (month <= 9 && month >= 6) {
+		if (eletric > 120) {
+			printf("%d", 7 * eletric);
+		}
+		else {
+			printf("%d", 5 * eletric);
+		}
+	}
+	else {
+		if (eletric > 120) {
+			printf("%d", 5 * eletric);
+		}
+		else {
+			printf("%d", 3 * eletric);
+		}
+	}
+}
