@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+void main() {
+	int a, b, max, last;
+	scanf("%d%d", &a, &b);
+	if (a < b) {
+		max = b;
+	}
+	else {
+		max = a;
+	}
+	printf("%d", 1);
+	for (int i = 2; i <= max; i++) {
+		if (a % i == 0 && b % i == 0) {
+			printf(" %d", i);
+			last = i;
+		}
+	}
+	printf("\n%d", last);
+}
