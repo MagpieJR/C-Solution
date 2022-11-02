@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+	int r;
+	float pi = 3.14;
+	scanf("%d", &r);
+	printf("%.0f\n%.0f", floor(2 * pi * r), floor(r * r * pi));
+}
