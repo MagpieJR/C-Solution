@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char vowel[2][6] = { "aeiou", "AEIOU" }, input[1000];
+	scanf("%s", &input);
+	int count = 0;
+	for (int i = 0; i < strlen(input); i++) {
+		for (int j = 0; j < 5; j++) {
+			if (input[i] == vowel[0][j] || input[i] == vowel[1][j]) {
+				count++;
+			}
+		}
+	}
+	printf("%d", count);
+	return 0;
+}
