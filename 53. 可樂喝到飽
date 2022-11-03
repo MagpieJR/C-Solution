@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int f(int n) {
+	int i, total = n, recode;
+	for (; n > 2;)
+	{
+		total += n / 3;
+		recode = n / 3;
+		n = n % 3 + recode;
+	}
+	if (n == 2) total++;
+	return total;
+}
+void main() {
+	int m, n;
+	scanf("%d", &m);
+	for (int i = 0; i < m; i++) {
+		scanf("%d", &n);
+		if (i == 0) {
+			printf("%d", f(n));
+		}
+		else {
+			printf(" %d", f(n));
+		}
+	}
+}
+
