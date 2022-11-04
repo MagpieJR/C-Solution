@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int sort(int* n, int num) {
+	int swap = 0, temp;
+	for (int i = 1; i < num; i++) {
+		int index = i;
+		while (index != 0) {
+			if (n[index] < n[index - 1]) {
+				temp = n[index];
+				n[index] = n[index - 1];
+				n[index - 1] = temp;
+				swap++;
+				index--;
+			}
+			else {
+				break;
+			}
+		}
+	}
+	return swap;
+}
+
+
+
+void main() {
+	int n, m, value,* sorted;
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &m);
+		sorted = (int *)malloc(sizeof(int) * m);
+		for (int j = 0; j < m; j++) {
+			scanf("%d", &value);
+			sorted[j] = value;
+		}
+		if (i == 0) {
+			printf("Optimal train swapping takes %d swaps.", sort(sorted, m));
+		}
+		else {
+			printf("\nOptimal train swapping takes %d swaps.", sort(sorted, m));
+		}
+		free(sorted);
+	}
+}
+
