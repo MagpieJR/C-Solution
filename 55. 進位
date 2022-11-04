@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+int f(int x, int y) {
+    int z = x + y, count = 1;
+    while (1) {
+
+        if (z / 10 == 0) {
+            break;
+        }
+        z /= 10;
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int a, b, out = 0;
+    while (scanf("%d %d", &a, &b)) {
+        int count = 0,flag = 0, digit = f(a, b), carry = 0;
+        if (a == 0 && b == 0) {
+            break;
+        }
+        else if (out != 0) {
+            printf("\n");
+        }
+
+        while (1) {
+            if (a % 10 + b % 10 + flag > 9) {
+                flag = 1;
+                carry++;
+            }
+            else {
+                flag = 0;
+            }
+            a /= 10; b /= 10;
+            if (count == digit) {
+                break;
+            }
+            count++;
+        }
+
+        if (carry == 0) {
+            printf("No carry operation.");
+        }
+        else if (carry > 1) {
+            printf("%d carry operations.", carry);
+        }
+        else {
+            printf("%d carry operation.", carry);
+        }
+        out++;
+
+    }
+    return 0;
+}
