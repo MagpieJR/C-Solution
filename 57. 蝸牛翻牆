@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+void main() {
+    int a, b, c, d, n = 0;
+    scanf("%d%d%d%d", &a, &b, &c, &d);
+
+    while (1) {
+        b += c;
+        n++;
+        if (b >= a) {
+            printf("%d", n);
+            break;
+        }
+        b -= d;
+    }
+}
