@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+int f(int n, int m) {
+	int flag = 1;
+	if (m == 0 || m == 1) {
+		flag = 0;
+	}
+	else {
+		while (1) {
+			if (n == 1) {
+				break;
+			}
+			else if (n % m != 0) {
+				flag = 0;
+				break;
+			}
+			n /= m;
+		}
+	}
+	
+	return flag;
+}
+
+void print(int n, int m) {
+	int first = 0;
+	if (n == 1) {
+		printf("%d", 1);
+	}
+	else {
+		while (1) {
+			if (first == 0) {
+				printf("%d", n);
+			}
+			else if (n == 1) {
+				printf(" %d", n);
+				break;
+			}
+			else {
+				printf(" %d", n);
+			}
+			n /= m;
+			first++;
+		}
+	}
+}
+
+void main() {
+	int n, m, first = 0;
+	while (scanf("%d%d", &n, &m) != EOF) {
+		if (f(n, m) && first == 0) {
+			print(n, m);
+			first++;
+		}
+		else if(f(n, m) == 0 && first == 0) {
+			printf("Boring!");
+			first++;
+		}else if (f(n, m)) {
+			printf("\n");
+			print(n, m);
+		}else {
+			printf("\n");
+			printf("Boring!");
+		}
+	}
+}
