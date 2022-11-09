@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+void main() {
+	int t, a, x;
+	scanf("%d", &t);
+
+	for (int f = 0; f < t; f++) {
+		scanf("%d", &a);
+
+		int b = a - 1, * a_array, * b_array, sum = 0;
+		a_array = (int *)malloc(a * sizeof(int));
+		b_array = (int *)malloc(b * sizeof(int));
+
+		if (a_array == NULL || b_array == NULL) {
+			printf("Error");
+		}
+
+		for (int i = 0; i < a; i++) {
+			scanf("%d", &x);
+			a_array[i] = x;
+		}
+
+
+		for (int i = 0; i < b; i++) {
+			b_array[i] = 0;
+		}
+
+		for (int i = 1; i < a; i++) {		
+			for (int j = i; j > 0; j--) {
+				if (a_array[i] >= a_array[j - 1]) {
+					b_array[i - 1] += 1;
+				}
+			}
+		}
+
+		for (int i = 0; i < b; i++) {
+			sum += b_array[i];
+		}
+		
+		if (f == 0) {
+			printf("%d", sum);
+		}
+		else {
+			printf("\n%d", sum);
+		}
+
+		free(a_array);
+		free(b_array);
+	}
+}
