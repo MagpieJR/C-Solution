@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+void main() {
+	int j, r, x, flag = 0, *max;
+	while (scanf("%d%d", &j, &r)) {
+		if (j == 0 && r == 0) {
+			break;
+		}
+		
+		int** jr;
+		jr = (int**)malloc(r * sizeof(int*));
+		
+		for (int i = 0; i < r; i++) {
+			jr[i] = (int*)malloc(j * sizeof(int));
+			for (int t = 0; t < j; t++) {
+				scanf("%d", &x);
+				jr[i][t] = x;
+			}
+		}
+
+		max = (int*)malloc(j * sizeof(int));
+
+		for (int i = 0; i < j; i++) {
+			int sum = 0;
+			for (int t = 0; t < r; t++) {
+				sum += jr[t][i];
+				max[i] = sum;
+			}
+		}
+
+		int temp = max[0], index = 0;
+
+		for (int i = 1; i < j; i++) {
+			if (max[i] >= temp) {
+				temp = max[i];
+				index = i;
+			}
+		}
+		
+		if (flag == 0) {
+			printf("%d", index + 1);
+			flag++;
+		}
+		else {
+			printf("\n%d", index + 1);
+		}
+
+		free(jr);
+		free(max);
+	}
+
+}
