@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <math.h>
+
+void main() {
+	int n;
+	scanf("%d", &n);
+
+	float position = sqrt(n);
+	int  flag = position;
+
+	if (position - flag == 0) {
+		if (flag % 2 == 0) {
+			printf("%d %d", flag, 1);
+		}
+		else {
+			printf("%d %d", 1, flag);
+		}
+	}
+	else {
+		if (flag % 2 == 0) {
+			int temp = n - (flag * flag);
+			if (temp <= flag + 1) {
+				printf("%d %d", flag + 1, temp);
+			}
+			else {
+				printf("%d %d", flag + 1 - (temp - flag - 1), flag + 1);
+			}
+		}
+		else {
+			int temp = n - (flag * flag);
+			if (temp <= flag + 1) {
+				printf("%d %d", temp, flag + 1);
+			}
+			else {
+				printf("%d %d", flag + 1, flag + 1 - (temp - flag - 1));
+			}
+
+		}
+	}
+}
