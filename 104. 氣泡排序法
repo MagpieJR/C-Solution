@@ -1,0 +1,37 @@
+bubble_sort.h:
+
+void bubble_sort(int data[]);
+
+
+bubble_sort.c:
+
+#include "bubble_sort.h"
+#include <stdio.h>
+
+void bubble_sort(int data[]) {
+    int size = 5;
+    int Last = size - 1;
+    for (int i = 0; i < size - 1; i++) {
+        int start = 0;
+        while (1) {
+            if (data[start] > data[start + 1]) {
+                int temp = data[start];
+                data[start] = data[start + 1];
+                data[start + 1] = temp;
+            }
+            if ((start + 1) == Last) {
+                break;
+            }
+            start++;
+        }
+        Last--;
+    }
+    for (int i = 0; i < size; i++) {
+        if (i == 0) {
+            printf("%d", data[0]);
+        }
+        else {
+            printf(" %d", data[i]);
+        }
+    }
+}
