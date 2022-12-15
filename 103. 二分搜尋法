@@ -1,0 +1,35 @@
+binarysearch.h:
+
+int binarysearch(int data[], int search, int n);
+int binsearch(int data[], int search, int start, int last);
+
+#include "binarysearch.h"
+#include <stdio.h>
+int binarysearch(int data[], int search, int n) {
+	return binsearch(data, search, 0, n - 1);
+}
+
+binarysearch.c:
+
+int binsearch(int data[], int search, int start, int last) {
+	if (start == last) {
+		if (data[start] != search) {
+			return -1;
+		}
+		else {
+			return start;
+		}
+	}
+	else {
+		int Middle = ((start + last) / 2) + 1;
+		if (data[Middle] == search) {
+			return Middle;
+		}
+		else if (data[Middle] > search) {
+			binsearch(data, search, start, Middle - 1);
+		}
+		else if (data[Middle] < search) {
+			binsearch(data, search, Middle + 1, last);
+		}
+	}
+}
