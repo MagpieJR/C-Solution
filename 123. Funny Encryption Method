@@ -1,0 +1,46 @@
+bin.h:
+
+int bin(int N);
+
+bin.c:
+
+#include "bin.h"
+#include <stdio.h>
+int bin(int N) {
+	int count = 0;
+
+	while (1) {
+		int remainder = N % 2;
+		if (remainder == 1) {
+			count++;
+		}
+		N /= 2;
+		if (N == 0) {
+			break;
+		}
+	}
+	return count;
+}
+
+hex.h:
+
+int hex(int N);
+
+hex.c:
+
+#include "hex.h"
+
+int hex(int N) {
+	int count = 0;
+	while (1) {
+		
+		int remainder = N % 10;
+		count += bin(remainder);
+		N /= 10;
+		if (N == 0) {
+			break;
+		}
+	
+	}
+	return count;
+}
