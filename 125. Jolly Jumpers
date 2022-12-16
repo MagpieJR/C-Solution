@@ -1,0 +1,37 @@
+Jolly_Jumpers.h:
+
+void Jolly_Jumpers(int Array[], int size);
+
+Jolly_Jumpers.c:
+
+#include "Jolly_Jumpers.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+void Jolly_Jumpers(int Array[], int size) {
+	int* count = (int*)malloc(size * sizeof(int)), flag = 1;
+	for (int i = 0; i < size; i++) {
+		count[i] = 0;
+	}
+	for (int i = 1; i < size; i++) {
+		int diff = Array[i] - Array[i - 1];
+		if (diff < 0) {
+			diff *= -1;
+		}
+		count[diff]++;
+		if (count[diff] > 1 || diff == 0) {
+			flag = 0;
+			break;
+		}
+	}
+
+	if (flag) {
+		printf("Jolly");
+	}
+	else {
+		printf("Not jolly");
+	}
+
+	free(count);
+
+}
