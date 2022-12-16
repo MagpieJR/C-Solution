@@ -1,0 +1,37 @@
+lcm.h:
+
+int lcm(int a, int b);
+
+lcm.c:
+
+#include "lcm.h"
+#include <stdio.h>
+
+int lcm(int a, int b) {
+	int min, max, result;
+	if (a > b) {
+		max = a;
+		min = b;
+	}
+	else {
+		max = b;
+		min = a;
+	}
+
+	while (1) {
+		int remainder = max % min;
+		int quotient = max / min;
+
+		if (remainder == 0) {
+			result = min;
+			break;
+		}
+		else {
+			int tmp = min;
+			min = remainder;
+			max = tmp;
+		}
+	}
+
+	return result * (a / result) * (b / result);
+}
