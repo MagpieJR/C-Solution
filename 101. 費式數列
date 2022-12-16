@@ -1,0 +1,33 @@
+getFib.h:
+
+void getFib(int N);
+
+getFib.c:
+
+#include "getFib.h"
+#include <stdlib.h>
+#include <stdio.h>
+void getFib(int N) {
+    int* Fibarray = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) {
+        if (i == 0) {
+            Fibarray[0] = 0;
+        }
+        else if (i == 1) {
+            Fibarray[1] = 1;
+        }
+        else {
+            Fibarray[i] = Fibarray[i - 1] + Fibarray[i - 2];
+        }
+    }
+
+    for (int i = 0; i < N; i++) {
+        if (i == 0) {
+            printf("%d", Fibarray[0]);
+        }
+        else {
+            printf(" %d", Fibarray[i]);
+        }
+    }
+    free(Fibarray);
+}
