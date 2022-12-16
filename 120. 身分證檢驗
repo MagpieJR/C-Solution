@@ -1,0 +1,35 @@
+ID_Check.h:
+
+void ID_Check(char ID[]);
+
+ID_Check.c:
+
+#include "ID_Check.h"
+#include <stdio.h>
+
+void ID_Check(char ID[]) {
+    int Alpha, tmp = ID[0], sum = 0;
+    if (tmp == 73) {
+        Alpha = 34;
+    }
+    else if (tmp > 73) {
+        Alpha = tmp - 57;
+    }
+    else {
+        Alpha = tmp - 55;
+    }
+
+    for (int i = 1; i < 9; i++) {
+        tmp = ID[i];
+        sum += (tmp - 48) * (9 - i);
+    }
+
+    sum += ((Alpha % 10) * 9 + (Alpha / 10) + ID[9] - 48);
+    
+    if (sum % 10 == 0) {
+        printf("real");
+    }
+    else {
+        printf("fake");
+    }
+}
