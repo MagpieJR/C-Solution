@@ -1,0 +1,17 @@
+getMax.h:
+
+void getMax(int data[], int size);
+
+getMax.c:
+
+#include "getMax.h"
+#include <stdio.h>
+void getMax(int data[], int size) {
+    int max = data[0];
+    for (int i = 1; i < size; i++) {
+        if (data[i] > max) {
+            max = data[i];
+        }
+    }
+    printf("%d", max);
+}
