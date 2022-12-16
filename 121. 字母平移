@@ -1,0 +1,24 @@
+ASCII.h:
+
+char ascii(char sign, int num, char msg);
+
+ASCII.c:
+
+#include "ASCII.h"
+char ascii(char sign, int num, char msg) {
+    int rotate = num % 26, chr = msg;
+    if (sign == '+') {
+        if ((chr + rotate) > 90) {
+            return (chr + rotate) -26;
+        }
+        else {
+            return chr + rotate;
+        }
+    }
+    else {
+        if ((chr - rotate) < 65) {
+            return 26 + (chr - rotate);
+        }
+    }
+
+}
