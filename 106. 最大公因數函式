@@ -1,0 +1,33 @@
+gcd.h:
+
+void gcd(int a, int b);
+
+gcd.c:
+
+#include "gcd.h"
+#include <stdio.h>
+void gcd(int a, int b) {
+    int max, min, result;
+    if (a > b) {
+        max = a;
+        min = b;
+    }
+    else {
+        max = b;
+        min = a;
+    }
+    while (1) {
+        int remainder = max % min;
+        int quotient = max / min;
+        if (remainder == 0) {
+            result = min;
+            break;
+        }
+        else {
+            int temp = min;
+            min = remainder;
+            max = temp;
+        }
+    }
+    printf("%d與%d的最大公因數為%d", a, b, result);
+}
