@@ -1,0 +1,23 @@
+mid.h:
+
+void mid(int a[5], int n);
+
+mid.c:
+
+#include "mid.h"
+#include <stdio.h>
+void mid(int a[5], int n) {
+    for (int i = 1; i < 5; i++) {
+        for (int j = i; j > 0; j--) {
+            if (a[j] < a[j - 1]) {
+                int temp = a[j - 1];
+                a[j - 1] = a[j];
+                a[j] = temp;
+            }
+            else {
+                break;
+            }
+        }
+    }
+    printf("Median = %d", a[2]);
+}
