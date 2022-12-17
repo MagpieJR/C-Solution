@@ -1,0 +1,19 @@
+max.h:
+
+int max(int* iptr, int n);
+
+max.c:
+
+#include "max.h"
+int max(int* iptr, int n) {
+    int max = *iptr;
+
+    for (int i = 1; i < n; i++) {
+        iptr--;
+        if (*iptr > max) {
+            max = *iptr;
+        }
+    }
+
+    return max;
+}
