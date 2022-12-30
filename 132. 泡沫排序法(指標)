@@ -1,0 +1,33 @@
+bubble.h:
+
+void bubble(int* arr);
+
+bubble.c:
+
+#include "bubble.h"
+#include <stdio.h>
+void bubble(int* arr)
+{	
+	int last = 5;
+	for (int i = 0; i < 4; i++) {
+		int start = 0;
+		for (int j = 1; j < last; j++) {
+			if (arr[start] > arr[j]) {
+				int tmp = arr[j];
+				arr[j] = arr[start];
+				arr[start] = tmp;
+			}
+			start++;
+		}
+		last--;
+	}
+
+	for (int i = 0; i < 5; i++) {
+		if (i == 0) {
+			printf("%d", arr[i]);
+		}
+		else {
+			printf(" %d", arr[i]);
+		}
+	}
+}
