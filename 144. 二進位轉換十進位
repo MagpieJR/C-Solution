@@ -1,0 +1,40 @@
+getDecimalValue.h:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct ListNode
+{
+    int val;
+    struct ListNode* next;
+};
+
+int getDecimalValue(struct ListNode* head);
+
+getDecimalValue.c:
+
+#include "getDecimalValue.h"
+#include <math.h>
+int getDecimalValue(struct ListNode* head)
+{
+	int count = 0, sum = 0;
+	
+	struct ListNode *ptr = head;
+	
+	while (1) {
+		if (ptr == NULL) {
+			break;
+		}
+		count++;
+		ptr = ptr->next;
+	}
+
+	ptr = head;
+	for (int i = count - 1; i > -1; i--) {
+		sum += ptr->val * pow(2, i);
+		ptr = ptr->next;
+	}
+	
+	return sum;
+}
+
