@@ -1,0 +1,42 @@
+LastElement.h:
+
+int extractMax(int* stone, int stoneSize);
+int lastStoneWeight(int* stones, int stonesSize);
+
+LastElement.c:
+
+#include "LastElement.h"
+#include <stdio.h>
+int extractMax(int* stone, int stoneSize) {
+	int max = stone[0], index = 0;
+	for (int i = 1; i < stoneSize; i++) {
+		if (stone[i] > max) {
+			max = stone[i];
+			index = i;
+		}
+	}
+	return index;
+}
+
+int lastStoneWeight(int* stones, int stonesSize) {
+	int YIndex, Y, XIndex, X;
+	while (1) {
+		YIndex = extractMax(stones, stonesSize);
+		if (stones[YIndex] == -1) {
+			return 0;
+		}
+		Y = stones[YIndex];
+		stones[YIndex] = -1;
+
+		XIndex = extractMax(stones, stonesSize);
+		if (stones[XIndex] == -1) {
+			return Y;
+		}
+		X = stones[XIndex];
+		stones[XIndex] = -1;
+
+		if (X != Y) {
+			stones[YIndex] = Y - X;
+		}
+	}
+}
