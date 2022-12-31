@@ -1,0 +1,13 @@
+len.h:
+
+void len(char* arr);
+
+len.c:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void len(char* arr)
+{
+	printf("%d", strlen(arr));
+}
