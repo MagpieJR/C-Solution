@@ -1,0 +1,18 @@
+GCD.h:
+
+int GCD(int t, int v);
+
+GCD.c:
+
+#include "GCD.h"
+
+int GCD(int t, int v) {
+    int remainder, quotient;
+
+    if (t % v == 0) {
+        return v;
+    }
+    else {
+        return GCD(v, t % v);
+    }
+}
