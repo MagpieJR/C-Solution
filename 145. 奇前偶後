@@ -1,0 +1,43 @@
+oddEvenList.h:
+
+#include <stdio.h>
+#include <stdlib.h>
+struct ListNode
+{
+    int val;
+    struct ListNode* next;
+};
+
+struct ListNode* oddEvenList(struct ListNode* head);
+
+oddEvenList.c:
+
+#include "oddEvenList.h"
+
+struct ListNode* oddEvenList(struct ListNode* head)
+{
+	int count = 0, result[1000], odd = 0, even = 1;
+	struct ListNode* ptr = head;
+
+	while (ptr != NULL) {
+		result[count] = ptr->val;
+		count++;
+		ptr = ptr->next;
+	}
+
+	ptr = head;
+	while (odd < count) {
+		ptr->val = result[odd];
+		odd += 2;
+		ptr = ptr->next;
+	}
+
+	
+	while (even < count) {
+		ptr->val = result[even];
+		even += 2;
+		ptr = ptr->next;
+	}
+
+	return head;
+}
