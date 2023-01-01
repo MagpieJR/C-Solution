@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct List {
+    int num;
+    int mod;
+    int Even_Odd;
+} List;
+
+void main() {
+    int n, m;
+    List* seq;
+    scanf("%d %d", &n, &m);
+
+    seq = (List*)malloc(sizeof(List) * n);
+
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &seq[i].num);
+        seq[i].mod = seq[i].num % m;
+        if (seq[i].num % 2 == 0) {
+            seq[i].Even_Odd = 1;
+        }
+        else {
+            seq[i].Even_Odd = 0;
+        }
+    }
+
+
+    
+    for (int i = 1; i < n; i++) {
+        for (int j = i; j > 0; j--) {
+            if (seq[j].mod < seq[j - 1].mod) {
+                List Tmp = seq[j - 1];
+                seq[j - 1] = seq[j];
+                seq[j] = Tmp;
+            }
+            else if (seq[j].mod == seq[j - 1].mod) {
+                if (seq[j].Even_Odd + seq[j - 1].Even_Odd == 1) {
+                    if (seq[j].Even_Odd == 0) {
+                        List Tmp = seq[j - 1];
+                        seq[j - 1] = seq[j];
+                        seq[j] = Tmp;
+                    }
+                }
+                else if (seq[j].Even_Odd + seq[j - 1].Even_Odd == 0) {
+                    if (seq[j - 1].num < seq[j].num) {
+                        List Tmp = seq[j - 1];
+                        seq[j - 1] = seq[j];
+                        seq[j] = Tmp;
+                    }
+                }
+                else if(seq[j].Even_Odd + seq[j - 1].Even_Odd == 2) {
+                    if (seq[j - 1].num > seq[j].num) {
+                        List Tmp = seq[j - 1];
+                        seq[j - 1] = seq[j];
+                        seq[j] = Tmp;
+                    }
+                }
+            }
+        }
+    }
+    
+
+    printf("%d %d\n", n, m);
+    for (int i = 0; i < n; i++) {
+        printf("%d\n", seq[i].num);
+    }
+    printf("%d %d", 0, 0);
+
+    free(seq);
+
+}
