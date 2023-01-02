@@ -5,25 +5,25 @@ void floodFill(int** image, int imageSize, int sr, int sc, int newColor) {
 
     int OriginColor = image[sr][sc];
     if (sc - 1 > -1) {
-        if (image[sr][sc - 1] == OriginColor && image[sr][sc - 1] != newColor) {
+        if (image[sr][sc - 1] == OriginColor) {
             image[sr][sc] = newColor;
             floodFill(image, imageSize, sr, sc - 1, newColor);
         }
     }
     if (sc + 1 < imageSize) {
-        if (image[sr][sc + 1] == OriginColor && image[sr][sc + 1] != newColor) {
+        if (image[sr][sc + 1] == OriginColor) {
             image[sr][sc] = newColor;
             floodFill(image, imageSize, sr, sc + 1, newColor);
         }
     }
     if (sr - 1 > -1) {
-        if (image[sr - 1][sc] == OriginColor && image[sr - 1][sc] != newColor) {
+        if (image[sr - 1][sc] == OriginColor) {
             image[sr][sc] = newColor;
             floodFill(image, imageSize, sr - 1, sc, newColor);
         }
     }
     if (sr + 1 < imageSize) {
-        if (image[sr + 1][sc] == OriginColor && image[sr + 1][sc] != newColor) {
+        if (image[sr + 1][sc] == OriginColor) {
             image[sr][sc] = newColor;
             floodFill(image, imageSize, sr + 1, sc, newColor);
         }
