@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct point_t point_t;
+struct point_t {
+	double x;
+	double y;
+};
+
+int main() {
+	point_t point;
+	scanf("%lf %lf", &point.x, &point.y);
+	if (point.x > 0 && point.y > 0) {
+		printf("%s", "第一象限");
+	}
+	else if (point.x < 0 && point.y > 0) {
+		printf("%s", "第二象限");
+	}
+	else if (point.x < 0 && point.y < 0) {
+		printf("%s", "第三象限");
+	}
+	else {
+		printf("%s", "第四象限");
+	}
+}
