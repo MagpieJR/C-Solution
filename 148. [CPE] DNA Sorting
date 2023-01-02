@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct DNA {
+	char *string;
+	int order;
+};
+
+void order(struct DNA *dna) {
+	int order = 0, len = strlen(dna->string);
+	for (int i = 0; i < len - 1; i++) {
+		for (int j = i + 1; j < len; j++) {
+			if (dna->string[i] > dna->string[j]) {
+				order++;
+			}
+		}
+	}
+	dna->order = order;
+}
+
+void sort(struct DNA* array, int size) {
+	for (int i = 0; i < size; i++) {
+		order(&array[i]);
+	}
+	for (int i = 1; i < size; i++) {
+		for (int j = i; j > 0; j--) {
+			if (array[j].order < array[j - 1].order) {
+				struct DNA Tmp = array[j];
+				array[j] = array[j - 1];
+				array[j - 1] = Tmp;
+			}
+		}
+	}
+}
+
+
+int main() {
+	int n, length, number, *array;
+	char* string;
+	struct DNA* Array;
+	scanf("%d", &n);
+	
+	
+	for (int i = 0; i < n; i++) {
+		scanf("%d %d", &length, &number);
+		Array = (struct DNA*)malloc(sizeof(struct DNA) * number );
+		string = (char*)malloc(sizeof(char) * (length + 1));
+		for (int j = 0; j < number; j++) {
+			scanf("%s", string);
+			Array[j].string = (char*)malloc(sizeof(char) * (strlen(string) + 1));
+			strcpy(Array[j].string, string);
+		}
+
+		sort(Array, number);
+
+		for (int j = 0; j < number; j++) {
+			if (j == 0) {
+				printf("%s", Array[j].string);
+			}
+			else {
+				printf("\n%s", Array[j].string);
+			}
+		}
+
+		for (int j = 0; j < number; j++) {
+			free(Array[j].string);
+		}
+		free(string);
+		free(Array);
+	}
+
+	return 0;
+}
