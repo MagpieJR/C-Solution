@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void Lake(int x, int y, int n, int m, int **map, int *size) {
+	(*size)++;
+	int Origin = map[x][y];
+	if (x + 1 < n) {
+		if (map[x + 1][y] == Origin) {
+			map[x][y] = 2;
+			Lake(x + 1, y, n, m, map, size);
+		}
+	}
+	if (x - 1 > -1) {
+		if (map[x - 1][y] == Origin) {
+			map[x][y] = 2;
+			Lake(x - 1, y, n, m, map, size);
+		}
+	}
+	if (y + 1 < m) {
+		if (map[x][y + 1] == Origin) {
+			map[x][y] = 2;
+			Lake(x , y + 1, n, m, map, size);
+		}
+	}
+	if (y - 1 > -1) {
+		if (map[x][y - 1] == Origin) {
+			map[x][y] = 2;
+			Lake(x, y - 1, n, m, map, size);
+		}
+	}
+	map[x][y] = 2;
+}
+
+
+int main() {
+
+	int n, m, ** map, group = 0, *Size;
+	scanf("%d %d", &n, &m);
+
+	Size = (int*)malloc(sizeof(int) * (n * m / 2 + 1));
+	map = (int**)malloc(sizeof(int*) * n);
+	for (int i = 0; i < n; i++) {
+		map[i] = (int*)malloc(sizeof(int) * m);
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			scanf("%d", &map[i][j]);
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (map[i][j] == 1) {
+				int size = 0;
+				Lake(i, j, n, m, map, &size);
+				Size[group] = size;
+				group++;
+			}
+		}
+	}
+
+
+	for (int i = 1; i < group; i++) {
+		for (int j = i; j > 0; j--) {
+			if (Size[j] > Size[j - 1]) {
+				int Tmp = Size[j];
+				Size[j] = Size[j - 1];
+				Size[j - 1] = Tmp;
+			}
+		}
+	}
+
+	for (int i = 0; i < group; i++) {
+		if (i == 0) {
+			printf("%d", Size[i]);
+		}
+		else {
+			printf("\n%d", Size[i]);
+		}
+	}
+
+
+	free(Size);
+	for (int i = 0; i < n; i++) {
+		free(map[i]);
+	}
+	free(map);
+	return 0;
+}
