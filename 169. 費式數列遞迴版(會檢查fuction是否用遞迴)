@@ -1,0 +1,16 @@
+fibr.h:
+
+int fibr(int n);
+
+fibr.c:
+
+#include "fibr.h"
+
+int fibr(int n) {
+	if (n == 0 || n == 1) {
+		return 1;
+	}
+	else {
+		return fibr(n - 1) + fibr(n - 2);
+	}
+}
