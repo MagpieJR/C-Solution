@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Student
+{
+	char studentName[20];
+	int score;
+};
+
+int main() {
+	int average = 0, max, index;
+	struct Student* student;
+	student = (struct Student*)malloc(sizeof(struct Student) * 3);
+
+	for (int i = 0; i < 3; i++) {
+		scanf("%s %d", student[i].studentName, &student[i].score);
+	}
+
+	max = student[0].score;
+	index = 0;
+	for (int i = 0; i < 3; i++) {
+		if (student[i].score > max) {
+			max = student[i].score;
+			index = i;
+		}
+		average += student[i].score;
+	}
+
+	printf("avg = %d\nmax = %s", average / 3, student[index].studentName);
+
+	free(student);
+
+}
