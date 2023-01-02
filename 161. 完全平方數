@@ -1,0 +1,20 @@
+rangePerfectSquare.h:
+
+#include <stdbool.h>
+bool rangePerfectSquare(int, int, int);
+
+rangePerfectSquare.c:
+
+#include "rangePerfectSquare.h"
+#include <stdio.h>
+bool rangePerfectSquare(int left, int right, int target) {
+	if (left * left == target) {
+		return 1;
+	}
+	else if (left < target) {
+		return rangePerfectSquare(left + 1, right, target);
+	}
+	else {
+		return 0;
+	}
+}
