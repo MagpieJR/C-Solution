@@ -1,0 +1,25 @@
+f.h:
+
+int f(int n);
+
+f.c:
+
+#include "f.h"
+#include <stdio.h>
+
+int f(int n) {
+	int sum = 0;
+	if (n < 10) {
+		return n;
+	}
+	else {
+		while (1) {
+			sum += n % 10;
+			n /= 10;
+			if (n == 0) {
+				break;
+			}
+		}
+		return f(sum);
+	}
+}
