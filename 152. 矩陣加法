@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct matrix {
+	int row, col;
+	int** data;
+} *MATRIX;
+
+int main() {
+	MATRIX Array = (struct matrix*)malloc(sizeof(struct matrix) * 2);
+
+	for (int i = 0; i < 2; i++) {
+		scanf("%d %d", &Array[i].row, &Array[i].col);
+
+		Array[i].data = (int**)malloc(sizeof(int*) * Array[i].row);
+
+		for (int j = 0; j < Array[i].row; j++) {
+			Array[i].data[j] = (int*)malloc(sizeof(int) * Array[i].col);
+		}
+
+		for (int k = 0; k < Array[i].row; k++) {
+			for (int t = 0; t < Array[i].col; t++) {
+				scanf("%d", &Array[i].data[k][t]);
+			}
+		}
+
+	}
+	
+	if (Array[0].col == Array[1].col && Array[1].row == Array[0].row) {
+		for (int i = 0; i < Array[0].row; i++) {
+			for (int j = 0; j < Array[0].col; j++) {
+				if (j == 0) {
+					printf("%d", Array[0].data[i][j] + Array[1].data[i][j]);
+				}
+				else {
+					printf(" %d", Array[0].data[i][j] + Array[1].data[i][j]);
+				}
+			}
+			if (i != (Array[0].row) - 1) {
+				printf("\n");
+			}
+		}
+	}
+	else {
+		printf("不可相加");
+	}
+
+	for (int i = 0; i < 2; i++) {
+		free(Array[i].data);
+	}
+	free(Array);
+	return 0;
+}
