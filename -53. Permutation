@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int *a, int *b) {
+	int Tmp = *a;
+	*a = *b;
+	*b = Tmp;
+}
+
+void Perm(int* array,  int *record, int start, int last) {
+	if (start == last - 1) {
+	
+				for (int i = 0; i < last; i++) {
+			if (i == 0) {
+				printf("%d", array[i]);
+			}
+			else {
+				printf(" %d", array[i]);
+			}
+		}
+		printf("\n");
+		
+	}
+	else {
+
+		for (int i = start; i < last; i++) {
+			int* Tmp = (int*)malloc(sizeof(int) * last);
+			for (int k = 0; k < last; k++) {
+				Tmp[k] = array[k];
+			}
+
+			swap(&array[i], &array[start]);
+			
+			if (start < last - 2) {
+				for (int k = start + 2; k < last; k++) {
+					for (int j = k; j > start + 1; j--) {
+						if (array[j] < array[j - 1]) {
+							int Tmp = array[j];
+							array[j] = array[j - 1];
+							array[j - 1] = Tmp;
+						}
+					}
+				}
+			}
+
+			Perm(array, record, start + 1, last);
+
+			for (int k = 0; k < last; k++) {
+				array[k] = Tmp[k];
+			}
+
+			free(Tmp);
+		}
+	}
+}
+
+int main() {
+	int n, *Array, *Record;
+	scanf("%d", &n);
+
+	Array = (int*)malloc(sizeof(int) * n);
+	Record = (int*)malloc(sizeof(int) * n);
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &Array[i]);
+	}
+
+	for (int i = 1; i < n; i++) {
+		for (int j = i; j > 0; j--) {
+			if (Array[j] < Array[j - 1]) {
+				int Tmp = Array[j - 1];
+				Array[j - 1] = Array[j];
+				Array[j] = Tmp;
+			}
+		}
+	}
+
+
+	Perm(Array, Record, 0, n);
+
+	free(Record);
+	free(Array);
+	return 0;
+}
